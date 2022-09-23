@@ -1,11 +1,11 @@
 import styled from "styled-components"
 
-export default function FighterImage({ fighter }) {
+export default function OpponentImage({ opponent }) {
   return (
     <div>
-      <FighterImageDisplay src={fighter} id="fighterimage" alt=""/>
+      <FighterImageDisplay src={opponent} id="opponentimage" alt="" />
     </div>
-  );
+  )
 }
 
 const FighterImageDisplay = styled.img`
