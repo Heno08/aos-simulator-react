@@ -1,10 +1,10 @@
 import styled from "styled-components"
 
-export default function CombatResolution() {
+export default function CombatResolution({ hitRoll, woundRoll }) {
   return(
     <SelectorContainer>
-      <p>Hits:<span id="hit-box"></span></p>
-      <p>Wounds:<span id="wound-box"></span></p>
+      <p>Hits: {hitRoll}</p>
+      <p>Wounds: {woundRoll}</p>
       <p>Saving Throw:<span id="save-box"></span></p>
       <p>Damage:<span id="damage-box"></span></p>
     </SelectorContainer>
