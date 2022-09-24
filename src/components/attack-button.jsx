@@ -20,8 +20,8 @@ export default function AttackButton() {
       <DisplayHits hitRoll={hitRoll} hits={hits} setHits={setHits} />
       <button id="wound-btn" onClick={() => setWoundRoll(diceRoll(hits))}>Roll The Dice to Wound!</button>
       <DisplayWounds woundRoll={woundRoll} wounds={wounds} setWounds={setWounds} />
-      <button id="wound-btn" onClick={() => setSaveRoll(diceRoll(wounds))}>Roll To Save!</button>
-      <DisplaySaves saveRoll={saveRoll} />
+      <button id="save-btn" onClick={() => setSaveRoll(diceRoll(wounds))}>Roll To Save!</button>
+    <DisplaySaves saveRoll={saveRoll} failedSaves={failedSaves} setFailedSaves={setFailedSaves} />
       <DisplayDamage />
     </SelectorContainer>
   )
