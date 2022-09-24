@@ -3,19 +3,22 @@ import saving from "../backend/combat/saving";
 import { useState, useEffect } from "react";
 
 export default function DisplaySaves({ saveRoll, failedSaves, setFailedSaves }) {
-  const [saves, setSaves] = useState(0);
+  const [saves, setSaves] = useState([]);
 
   useEffect(() => {
-    console.log(saveRoll);
+    console.log(saveRoll.length);
     setSaves(saving(saveRoll));
-    console.log(saves);
-  }, [saveRoll])
+  }, [saveRoll]);
+
+  useEffect(() => {
+    setFailedSaves(saveRoll.length - saves);
+  }, [saves]);
 
   return(
     <SelectorContainer>
       <p>Your Opponent made {saves} saves!</p>
     </SelectorContainer>
-  )
+  );
 };
 
 const SelectorContainer = styled.div`

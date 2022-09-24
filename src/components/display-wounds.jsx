@@ -4,9 +4,7 @@ import { useEffect } from "react";
 
 export default function DisplayWounds({ woundRoll, wounds, setWounds }) {
   useEffect(() => {
-    console.log(woundRoll);
     setWounds(wounding(woundRoll))
-    console.log(wounds)
   })
 
   return(

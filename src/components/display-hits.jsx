@@ -5,7 +5,6 @@ import { hitting } from "../backend/combat/combat.js";
 
 export default function DisplayHits({ hitRoll, setHits, hits }) {
   useEffect(() => {
-    console.log(hitRoll)
     setHits(hitting(hitRoll))
   }, [hitRoll, setHits]);
 

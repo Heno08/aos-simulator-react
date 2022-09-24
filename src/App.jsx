@@ -8,6 +8,7 @@ import axios from 'axios';
 
 function App() {
   const [models, setModels] = useState([]);
+  const [selectedFighter, setSelectedFighter] = useState("none");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -17,13 +18,17 @@ function App() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    console.log(selectedFighter.name)
+  }, [selectedFighter])
+
   return (
     <>
       <Flex>
-        <FighterSelector fighters={models} />
+        <FighterSelector fighters={models} selectedFighter={selectedFighter} setSelectedFighter={setSelectedFighter} />
         <OpponentSelector fighters={models} />
       </Flex>
-      <AttackButton />
+      <AttackButton selectedFighter={selectedFighter} />
     </>
   );
 }

@@ -1,8 +1,12 @@
 import styled from "styled-components";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import damagecalc from "../backend/combat/damage";
 
-export default function DisplayDamage() {
-  const [damage, setDamage] = useState([]);
+export default function DisplayDamage({ failedSaves, damage, setDamage }) {
+  useEffect(() => {
+    console.log(failedSaves)
+    setDamage(damagecalc(failedSaves));
+  }, [failedSaves])
 
   return(
     <SelectorContainer>

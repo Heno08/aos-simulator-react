@@ -1,9 +1,7 @@
 import styled from "styled-components";
-import { useState } from 'react';
 import FighterImage from "./fighter-image";
 
-export default function FighterSelector({ fighters }) {
-  const [selectedFighter, setSelectedFighter] = useState("none");
+export default function FighterSelector({ fighters, selectedFighter, setSelectedFighter }) {
 
   return (
     <SelectorContainer>
