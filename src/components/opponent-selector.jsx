@@ -11,7 +11,7 @@ export default function OpponentSelector({ fighters }) {
       <Selector name="opponent" id="fighter-opponent" onChange={(e) => setSelectedOpponent(e.target.value)}>
         <option value="none"></option>
         {fighters.map((model) => (
-          <option value={model.img}>{model.name}</option>
+          <option key={model.id} value={model.img}>{model.name}</option>
         ))}
       </Selector>
       {selectedOpponent !== "none" ? <OpponentImage opponent={selectedOpponent} /> : <p>Nothing Selected</p>}

@@ -1,9 +1,7 @@
 import styled from "styled-components";
-import { useState } from 'react';
 import FighterImage from "./fighter-image";
 
-export default function FighterSelector({ fighters }) {
-  const [selectedFighter, setSelectedFighter] = useState("none");
+export default function FighterSelector({ fighters, selectedFighter, setSelectedFighter }) {
 
   return (
     <SelectorContainer>
@@ -11,7 +9,7 @@ export default function FighterSelector({ fighters }) {
       <Selector name="fighter" id="fighter-selector" onChange={(e) => setSelectedFighter(e.target.value)}>
         <option value="none"></option>
         {fighters.map((model) => (
-          <option value={model.img}>{model.name}</option>
+          <option key={model.id} value={model.img}>{model.name}</option>
         ))}
       </Selector>
       {selectedFighter !== "none" ? <FighterImage fighter={selectedFighter} /> : <p>Nothing Selected</p>}
