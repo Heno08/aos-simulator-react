@@ -5,7 +5,6 @@ import OpponentSelector from './components/opponent-selector';
 import AttackButton from './components/attack-button';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { diceRoll, hitting, wounding, damage } from "../src/backend/combat/combat.js";
 
 function App() {
   const [models, setModels] = useState([]);
@@ -24,7 +23,7 @@ function App() {
         <FighterSelector fighters={models} />
         <OpponentSelector fighters={models} />
       </Flex>
-      <AttackButton diceRoll={diceRoll} hitting={hitting} wounding={wounding} damage={damage}/>
+      <AttackButton />
     </>
   );
 }

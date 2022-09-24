@@ -1,17 +1,28 @@
 import styled from "styled-components";
-import { useState } from "react";
-import CombatResolution from "./combat-resolution";
+import { useEffect, useState } from "react";
+import { diceRoll } from "../backend/combat/combat.js";
+import DisplayHits from "./display-hits";
+import DisplayWounds from "./display-wounds.jsx";
+import DisplaySaves from "./display-saves.jsx";
+import DisplayDamage from "./display-damage.jsx";
 
-export default function AttackButton({ diceRoll, hitting, wounding, damage }) {
-  const [hitRoll, setHitRoll] = useState();
-  const [woundRoll, setWoundRoll] = useState();
-  const [saveRoll, setSaveRoll] = useState();
+export default function AttackButton() {
+  const [hitRoll, setHitRoll] = useState([]);
+  const [hits, setHits] = useState([]);
+  const [woundRoll, setWoundRoll] = useState([]);
+  const [wounds, setWounds] = useState([]);
+  const [saveRoll, setSaveRoll] = useState([]);
+  const [failedSaves, setFailedSaves] = useState([]);
 
   return (
     <SelectorContainer>
-      {!hitRoll ? <button id="hit-btn" onClick={() => setHitRoll(diceRoll(1))}>Roll The Dice to Hit!</button> : <button id="wound-btn" onClick={() => setWoundRoll(diceRoll(1))}>Roll The Dice to Wound!</button>}
-      {woundRoll ? setSaveRoll(diceRoll(1)) : <></>}
-      <CombatResolution hitRoll={hitRoll} woundRoll={woundRoll} saveRoll={saveRoll} />
+      <button id="hit-btn" onClick={() => setHitRoll(diceRoll(2))}>Roll The Dice to Hit!</button>
+      <DisplayHits hitRoll={hitRoll} hits={hits} setHits={setHits} />
+      <button id="wound-btn" onClick={() => setWoundRoll(diceRoll(hits))}>Roll The Dice to Wound!</button>
+      <DisplayWounds woundRoll={woundRoll} wounds={wounds} setWounds={setWounds} />
+      <button id="wound-btn" onClick={() => setSaveRoll(diceRoll(wounds))}>Roll To Save!</button>
+      <DisplaySaves saveRoll={saveRoll} />
+      <DisplayDamage />
     </SelectorContainer>
   )
 }
