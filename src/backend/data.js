@@ -1,13 +1,13 @@
 const data = {
   models: [
     {
-      id: 1,
+      id: 0,
       name: "Stormcast Vindictor",
       unitSize: 5,
       wounds: 2,
       save: 3,
       bravery: 7,
-      img: "SC-Vindictor",
+      img: "StormcastVindictor.png",
       meleeWeapon: {
         name: "Stormspear",
         attacks: 2,
@@ -18,13 +18,13 @@ const data = {
       }
     },
     {
-      id: 2,
+      id: 1,
       name: "Gutrippa",
       unitSize: 10,
       wounds: 2,
       save: 5,
       bravery: 5,
-      img: "Gutrippa",
+      img: "Gutrippa.png",
       meleeWeapon: {
         name: "Wicked Hakka",
         attacks: 2,

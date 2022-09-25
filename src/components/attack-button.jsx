@@ -6,7 +6,7 @@ import DisplayWounds from "./display-wounds.jsx";
 import DisplaySaves from "./display-saves.jsx";
 import DisplayDamage from "./display-damage.jsx";
 
-export default function AttackButton({ selectedFighter }) {
+export default function AttackButton({ fighter, opponent }) {
   const [hitRoll, setHitRoll] = useState([]);
   const [hits, setHits] = useState([]);
   const [woundRoll, setWoundRoll] = useState([]);
@@ -17,12 +17,12 @@ export default function AttackButton({ selectedFighter }) {
 
   return (
     <SelectorContainer>
-      <button id="hit-btn" onClick={() => setHitRoll(diceRoll(2))}>Roll The Dice to Hit!</button>
-      <DisplayHits hitRoll={hitRoll} hits={hits} setHits={setHits} />
+      <button id="hit-btn" onClick={() => setHitRoll(diceRoll(fighter.meleeWeapon.attacks))}>Roll The Dice to Hit!</button>
+      <DisplayHits hitRoll={hitRoll} hits={hits} setHits={setHits} toHit={fighter.meleeWeapon.toHit} />
       <button id="wound-btn" onClick={() => setWoundRoll(diceRoll(hits))}>Roll The Dice to Wound!</button>
-      <DisplayWounds woundRoll={woundRoll} wounds={wounds} setWounds={setWounds} />
+      <DisplayWounds woundRoll={woundRoll} wounds={wounds} setWounds={setWounds} toWound={fighter.meleeWeapon.toWound} />
       <button id="save-btn" onClick={() => setSaveRoll(diceRoll(wounds))}>Roll To Save!</button>
-      <DisplaySaves saveRoll={saveRoll} failedSaves={failedSaves} setFailedSaves={setFailedSaves} />
+      <DisplaySaves saveRoll={saveRoll} failedSaves={failedSaves} setFailedSaves={setFailedSaves} save={opponent.save} />
       <DisplayDamage failedSaves={failedSaves} damage={damage} setDamage={setDamage}/>
     </SelectorContainer>
   )

@@ -2,17 +2,20 @@ import styled from "styled-components";
 import FighterImage from "./fighter-image";
 
 export default function FighterSelector({ fighters, selectedFighter, setSelectedFighter }) {
+  const onChange = (e) => {
+    setSelectedFighter(fighters[e.target.value])
+  };
 
   return (
     <SelectorContainer>
       <label for="fighter">Choose a fighter:</label>
-      <Selector name="fighter" id="fighter-selector" onChange={(e) => setSelectedFighter(e.target.value)}>
+      <Selector name="fighter" onChange={onChange}>
         <option value="none"></option>
         {fighters.map((model) => (
-          <option key={model.id} value={model.img}>{model.name}</option>
+          <option key={model.id} value={model.id}>{model.name}</option>
         ))}
       </Selector>
-      {selectedFighter !== "none" ? <FighterImage fighter={selectedFighter} /> : <p>Nothing Selected</p>}
+      <FighterImage fighter={selectedFighter} />
     </SelectorContainer>
   )
 }

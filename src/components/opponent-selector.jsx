@@ -1,20 +1,21 @@
 import styled from "styled-components";
-import { useState } from "react";
 import OpponentImage from "./opponent-image";
 
-export default function OpponentSelector({ fighters }) {
-  const [selectedOpponent, setSelectedOpponent] = useState("none");
+export default function OpponentSelector({ fighters, selectedOpponent, setSelectedOpponent }) {
+  const onChange = (e) => {
+    setSelectedOpponent(fighters[e.target.value])
+  };
 
   return (
     <SelectorContainer>
       <label for="opponent">Choose your Opponent:</label>
-      <Selector name="opponent" id="fighter-opponent" onChange={(e) => setSelectedOpponent(e.target.value)}>
+      <Selector name="opponent" id="fighter-opponent" onChange={onChange}>
         <option value="none"></option>
         {fighters.map((model) => (
-          <option key={model.id} value={model.img}>{model.name}</option>
+          <option key={model.id} value={model.id}>{model.name}</option>
         ))}
       </Selector>
-      {selectedOpponent !== "none" ? <OpponentImage opponent={selectedOpponent} /> : <p>Nothing Selected</p>}
+      <OpponentImage opponent={selectedOpponent} />
     </SelectorContainer>
   )
 }

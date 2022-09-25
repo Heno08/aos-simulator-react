@@ -3,7 +3,7 @@ import styled from "styled-components"
 export default function OpponentImage({ opponent }) {
   return (
     <div>
-      <FighterImageDisplay src={ require(`../images/${opponent}.png`)} id="opponentimage" alt="" />
+      <FighterImageDisplay src={require(`../images/${opponent.img}`)} id="opponentimage" alt="" />
     </div>
   )
 }
