@@ -1,7 +1,7 @@
-export default function saving(saveRoll) {
+export default function saving(saveRoll, save) {
   let saves = 0;
   for (let i = 0; i < saveRoll.length; i++) {
-    if(saveRoll[i] >= 3) {
+    if(saveRoll[i] >= save) {
       saves++;
     }
   };

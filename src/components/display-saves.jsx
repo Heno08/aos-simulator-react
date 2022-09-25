@@ -2,13 +2,12 @@ import styled from "styled-components";
 import saving from "../backend/combat/saving";
 import { useState, useEffect } from "react";
 
-export default function DisplaySaves({ saveRoll, failedSaves, setFailedSaves }) {
+export default function DisplaySaves({ saveRoll, failedSaves, setFailedSaves, save }) {
   const [saves, setSaves] = useState([]);
 
   useEffect(() => {
-    console.log(saveRoll.length);
-    setSaves(saving(saveRoll));
-  }, [saveRoll]);
+    setSaves(saving(saveRoll, save));
+  }, [saveRoll, save]);
 
   useEffect(() => {
     setFailedSaves(saveRoll.length - saves);
@@ -16,7 +15,7 @@ export default function DisplaySaves({ saveRoll, failedSaves, setFailedSaves }) 
 
   return(
     <SelectorContainer>
-      <p>Your Opponent made {saves} saves!</p>
+      <p>Your Opponent made {saves} saves and failed {failedSaves}!</p>
     </SelectorContainer>
   );
 };

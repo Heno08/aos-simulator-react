@@ -4,7 +4,6 @@ import damagecalc from "../backend/combat/damage";
 
 export default function DisplayDamage({ failedSaves, damage, setDamage }) {
   useEffect(() => {
-    console.log(failedSaves)
     setDamage(damagecalc(failedSaves));
   }, [failedSaves])
 

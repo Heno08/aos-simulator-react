@@ -6,9 +6,13 @@ import AttackButton from './components/attack-button';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
+const defaultFighter = {name: 'none', img: 'background.jpg', meleeWeapon: {toHit: 0, toWound: 0}};
+const defaultOpponent = {name: 'none', img: 'background.jpg'};
+
 function App() {
   const [models, setModels] = useState([]);
-  const [selectedFighter, setSelectedFighter] = useState("none");
+  const [selectedFighter, setSelectedFighter] = useState(defaultFighter);
+  const [selectedOpponent, setSelectedOpponent] = useState(defaultOpponent);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,16 +23,15 @@ function App() {
   }, []);
 
   useEffect(() => {
-    console.log(selectedFighter.name)
-  }, [selectedFighter])
+  }, [selectedFighter, selectedOpponent])
 
   return (
     <>
       <Flex>
         <FighterSelector fighters={models} selectedFighter={selectedFighter} setSelectedFighter={setSelectedFighter} />
-        <OpponentSelector fighters={models} />
+        <OpponentSelector fighters={models} selectedOpponent={selectedOpponent} setSelectedOpponent={setSelectedOpponent} />
       </Flex>
-      <AttackButton selectedFighter={selectedFighter} />
+      <AttackButton fighter={selectedFighter} opponent={selectedOpponent} />
     </>
   );
 }
