@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const defaultFighter = {name: 'none', img: 'background.jpg', meleeWeapon: {toHit: 0, toWound: 0}};
-const defaultOpponent = {name: 'none', img: 'background.jpg'};
+const defaultOpponent = {name: 'none', img: 'background.jpg', save: 0};
 
 function App() {
   const [models, setModels] = useState([]);
