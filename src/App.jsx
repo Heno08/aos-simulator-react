@@ -22,9 +22,6 @@ function App() {
     fetchData();
   }, []);
 
-  useEffect(() => {
-  }, [selectedFighter, selectedOpponent])
-
   return (
     <>
       <Flex>
