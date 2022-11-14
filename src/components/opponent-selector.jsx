@@ -8,7 +8,7 @@ export default function OpponentSelector({ fighters, selectedOpponent, setSelect
 
   return (
     <SelectorContainer>
-      <label for="opponent">Choose your Opponent:</label>
+      <label htmlFor="opponent">Choose your Opponent:</label>
       <Selector name="opponent" id="fighter-opponent" onChange={onChange}>
         <option value="none"></option>
         {fighters.map((model) => (

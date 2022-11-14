@@ -9,7 +9,7 @@ export default function FighterSelector({ fighters, selectedFighter, setSelected
 
   return (
     <SelectorContainer>
-      <label for="fighter">Choose a fighter:</label>
+      <label htmlFor="fighter">Choose a fighter:</label>
       <Selector name="fighter" onChange={onChange}>
         <option value="none"></option>
         {React.Children.toArray(fighters.map((model) => (
