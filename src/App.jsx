@@ -6,8 +6,8 @@ import AttackButton from './components/attack-button';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const defaultFighter = {name: 'none', img: 'background.jpg', meleeWeapon: {toHit: 0, toWound: 0}};
-const defaultOpponent = {name: 'none', img: 'background.jpg', save: 0};
+const defaultFighter = {name: 'none', img: 'noimg.jpg', meleeWeapon: {toHit: 0, toWound: 0}};
+const defaultOpponent = {name: 'none', img: 'noimg.jpg', save: 0};
 
 function App() {
   const [models, setModels] = useState([]);
@@ -16,8 +16,8 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await axios.get('/api/models')
-      setModels(data)
+      const { data } = await axios.get('https://late-dew-3121.fly.dev/api/v1/units')
+      setModels(data.data)
     }
     fetchData();
   }, []);
