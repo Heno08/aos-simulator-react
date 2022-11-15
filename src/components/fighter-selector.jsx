@@ -13,7 +13,7 @@ export default function FighterSelector({ fighters, selectedFighter, setSelected
       <Selector name="fighter" onChange={onChange}>
         <option value="none"></option>
         {React.Children.toArray(fighters.map((model) => (
-          <option key={model.id} value={model.id}>{model.name}</option>
+          <option key={model.id - 1} value={model.id - 1}>{model.name}</option>
         )))}
       </Selector>
       <FighterImage fighter={selectedFighter} />
