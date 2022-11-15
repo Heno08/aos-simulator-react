@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 import OpponentImage from "./opponent-image";
 
@@ -11,9 +12,9 @@ export default function OpponentSelector({ fighters, selectedOpponent, setSelect
       <label htmlFor="opponent">Choose your Opponent:</label>
       <Selector name="opponent" id="fighter-opponent" onChange={onChange}>
         <option value="none"></option>
-        {fighters.map((model) => (
-          <option key={model.id} value={model.id}>{model.name}</option>
-        ))}
+        {React.Children.toArray(fighters.map((model) => (
+          <option key={model.id - 1} value={model.id - 1}>{model.name}</option>
+        )))}
       </Selector>
       <OpponentImage opponent={selectedOpponent} />
     </SelectorContainer>

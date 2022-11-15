@@ -6,13 +6,14 @@ import AttackButton from './components/attack-button';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const defaultFighter = {name: 'none', img: 'noimg.jpg', meleeWeapon: {toHit: 0, toWound: 0}};
+const defaultFighter = {name: 'none', img: 'noimg.jpg', weapons: [{tohit: 0, towound: 0}]};
 const defaultOpponent = {name: 'none', img: 'noimg.jpg', save: 0};
 
 function App() {
   const [models, setModels] = useState([]);
   const [selectedFighter, setSelectedFighter] = useState(defaultFighter);
   const [selectedOpponent, setSelectedOpponent] = useState(defaultOpponent);
+  console.log(selectedFighter);
 
   useEffect(() => {
     const fetchData = async () => {
