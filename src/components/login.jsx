@@ -1,7 +1,8 @@
 import { useState } from 'react';
 
-export default function Login({ onLogin }) {
+export default function Login({ setAdmin }) {
   const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -10,19 +11,29 @@ export default function Login({ onLogin }) {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ username }),
+      body: JSON.stringify({ username, password }),
     })
       .then((r) => r.json())
-      .then((user) => onLogin(user))
-  }
+      .then((user) => setAdmin(user))
+  };
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
+      <p>Username:
+        <input
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+      </p>
+      <p> Password:
+        <input
+          type="text"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </p>
+      <button type="submit">Login</button>
     </form>
-  )
+  );
 }
