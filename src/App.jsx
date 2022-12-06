@@ -7,9 +7,14 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Login from './components/login';
 import Logout from './components/logout';
+import Dashboard from './components/dashboard';
 
 const defaultFighter = {name: 'none', img: 'noimg.jpg', weapons: [{tohit: 0, towound: 0}]};
 const defaultOpponent = {name: 'none', img: 'noimg.jpg', save: 0};
+const openInNewTab = (url) => {
+  const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
+  if (newWindow) newWindow.opener = null
+}
 
 function App() {
   const [models, setModels] = useState([]);
@@ -41,7 +46,7 @@ function App() {
         <OpponentSelector fighters={models} selectedOpponent={selectedOpponent} setSelectedOpponent={setSelectedOpponent} />
       </Flex>
       <AttackButton fighter={selectedFighter} opponent={selectedOpponent} />
-      {admin ?  <Logout setAdmin={setAdmin}></Logout> : <Login setAdmin={setAdmin}></Login>}
+      {admin ?  <><Logout setAdmin={setAdmin}></Logout> <Dashboard openInNewTab={openInNewTab} models={models}></Dashboard></> : <Login setAdmin={setAdmin}></Login>}
     </>
   );
 }
