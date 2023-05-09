@@ -32,7 +32,7 @@ function App() {
   }, []);
 
   useEffect (() => {
-    fetch("/me").then((r) => {
+    fetch("https://late-dew-3121.fly.dev/me").then((r) => {
       if(r.ok) {
         r.json().then((user) => setAdmin(user))
       }
