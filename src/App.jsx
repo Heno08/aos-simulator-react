@@ -25,7 +25,7 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await axios.get('/api/v1/units/')
+      const { data } = await axios.get('https://late-dew-3121.fly.dev/api/v1/units/')
       setModels(data.data)
     }
     fetchData();
